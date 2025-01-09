@@ -12,6 +12,11 @@ lenin.anguisaca@ucuenca.edu.ec
 ## Descripción
 Este proyecto implementa un programa para aplicar efectos de reverberación a señales de audio en formato WAV. El programa permite seleccionar una pista de audio, calcular su Transformada de Fourier (TF), y simular la reverberación mediante la multiplicación de la TF del audio original con la TF de la respuesta al impulso. Posteriormente, se obtiene la señal de salida aplicando la transformada inversa, normalizando la señal y guardándola como un nuevo archivo WAV.
 
+![TF entrtada](tf_entrada.png)
+![TF_ir](tf_ir.png)
+![TF dalida](tf_salida.png)
+
+
 ## Características
 Transformada de Fourier (TF): Calcula la TF de la señal de audio y de la respuesta al impulso.
 Reverberación: Simula el efecto de reverberación utilizando parámetros ajustables de atenuación, período y número de reflexiones.
