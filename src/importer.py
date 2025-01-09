@@ -1,15 +1,13 @@
 import tkinter as tk
 from tkinter import filedialog
-
 import numpy as np
 from scipy.io import wavfile
-
 
 def seleccionar_archivo_wav():
     try:
         # Crear la ventana principal de Tkinter (oculta)
         root = tk.Tk()
-        root.withdraw()  # Ocultar la ventana principal
+        root.withdraw()
 
         # Abrir un cuadro de diálogo para seleccionar un archivo WAV
         archivo_wav = filedialog.askopenfilename(
@@ -33,16 +31,20 @@ def seleccionar_archivo_wav():
     return nombre, sample_rate, audio
 
 def guardar_archivo_wav(sample_rate, output_signal):
-    try:
-        # Crear la ventana principal de Tkinter (oculta)
-        root = tk.Tk()
-        root.withdraw()  # Ocultar la ventana principal
 
+    try:
         # Abrir un cuadro de diálogo para guardar un archivo WAV
         archivo_wav = filedialog.asksaveasfilename(
             title="Guardar archivo WAV",
             filetypes=[("Archivos WAV", "*.wav")]
         )
+
+        if not archivo_wav:
+            print("Operación de guardado cancelada.")
+            return
+
+        #normalizacion de la senial de salida
+        output_signal = output_signal / np.max(np.abs(output_signal)) * 32767
 
         # Guardar la señal de salida en un archivo WAV
         wavfile.write(archivo_wav, sample_rate, output_signal.astype(np.int16))
